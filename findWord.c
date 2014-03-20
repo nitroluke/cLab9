@@ -4,46 +4,34 @@ in lab 9
 3-18-14
 */
 
-#include <findWord.h>
 #include <stdio.h>
 #include <stdlib.h>
-int arrSize = 3;
-static int addressArr[2];
 
-int main(){
-
-
-return 0;
-}
-
-
-int * findWord(char charArr[arrSize][arrSize], char searchFor[3]){
-
+void findWord(char charArr[3][3], char searchFor[3],int* coordX,int* coordY){
 int arrI = 0;
 int arrJ = 0;
-
-addressArr[0] = -1;
-addressArr[1] = -1;
-for(arrI; arrI < arrSize; arrI++){ // search for horizontal words words.
+*coordX = -1;
+*coordY = -1;
+for(arrI; arrI < 3; arrI++){ // search for horizontal words words.
 	if(charArr[arrI][0] == searchFor[0]){
 		if(charArr[arrI][1] == searchFor[1]){
 			if(charArr[arrI][2] == searchFor[2]){
-			addressArr[0] = charArr[0][arrI];  // the word exists
+			int foundCoord = arrI;
+			*coordX = foundCoord;
+			*coordY = 0;
 			}
 		}
 	}
 }
-for(arrJ; arrJ < arrSize; arrJ++){
+for(arrJ; arrJ < 3; arrJ++){
 	if(charArr[0][arrJ] == searchFor[0]){
-		if(charArr[1][arrJ] == searchfor[1]){
+		if(charArr[1][arrJ] == searchFor[1]){
 			if(charArr[2][arrJ] == searchFor[2]){
-			addressArr[1] = charArr[arrJ][0]; // the word is vertical
+			int foundCoord = arrJ;
+			*coordY = foundCoord;
+			*coordX = 0;
 			}
 		}
 	}
 }
-
-
-
-return addressArr;
 }
